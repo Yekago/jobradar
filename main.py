@@ -1,15 +1,14 @@
 import pandas as pd
+import os
 
-# CSV-Datei laden
-df = pd.read_csv("arbeitsmarkt.csv")
+# Aktueller Pfad der Python-Datei selbst (nicht des Aufrufs)
+script_dir = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(script_dir, "arbeitsmarkt.csv")
 
-# Überblick
-print("📊 Übersicht über die Arbeitsmarktdaten:\n")
-print(df)
+print("Aktueller Skript-Pfad:", script_dir)
+print("Geladene Datei:", csv_path)
 
-# Gruppieren nach Beruf
-stellen_pro_beruf = df.groupby("Beruf")["Anzahl_Stellen"].sum()
+print("Herzlich Willkommen im Jobradar")
 
-print("\n🔎 Anzahl offener Stellen pro Beruf:\n")
-print(stellen_pro_beruf)
-
+df = pd.read_csv(csv_path)
+print(df.head())
